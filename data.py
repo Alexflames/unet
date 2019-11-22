@@ -70,7 +70,7 @@ class myAugmentation(object):
 			self.doAugmentate(img, savedir, str(i))
 
 
-	def doAugmentate(self, img, save_to_dir, save_prefix, batch_size=1, save_format='tif', imgnum=30):
+	def doAugmentate(self, img, save_to_dir, save_prefix, batch_size=1, save_format='tif', imgnum=26):
 
 		"""
 		augmentate one image
@@ -135,7 +135,7 @@ class myAugmentation(object):
 
 class dataProcess(object):
 
-	def __init__(self, out_rows, out_cols, data_path = "../deform/train", label_path = "../deform/label", test_path = "../test", npy_path = "../npydata", img_type = "tif"):
+	def __init__(self, out_rows, out_cols, data_path = "unet/data/train/image", label_path = "unet/data/train/label", test_path = "unet/data/test", npy_path = "unet/data/npydata", img_type = "tif"):
 
 		"""
 		
@@ -160,7 +160,7 @@ class dataProcess(object):
 		imglabels = np.ndarray((len(imgs),self.out_rows,self.out_cols,1), dtype=np.uint8)
 		for imgname in imgs:
 			midname = imgname[imgname.rindex("/")+1:]
-			img = load_img(self.data_path + "/" + midname,grayscale = True)
+			img = load_img(self.data_path + "/" + midname)
 			label = load_img(self.label_path + "/" + midname,grayscale = True)
 			img = img_to_array(img)
 			label = img_to_array(label)
@@ -188,7 +188,7 @@ class dataProcess(object):
 		imgdatas = np.ndarray((len(imgs),self.out_rows,self.out_cols,1), dtype=np.uint8)
 		for imgname in imgs:
 			midname = imgname[imgname.rindex("/")+1:]
-			img = load_img(self.test_path + "/" + midname,grayscale = True)
+			img = load_img(self.test_path + "/" + midname)
 			img = img_to_array(img)
 			#img = cv2.imread(self.test_path + "/" + midname,cv2.IMREAD_GRAYSCALE)
 			#img = np.array([img])
