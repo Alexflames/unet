@@ -161,7 +161,7 @@ class dataProcess(object):
 		for imgname in imgs:
 			midname = imgname[imgname.rindex("/")+1:]
 			img = load_img(self.data_path + "/" + midname)
-			label = load_img(self.label_path + "/" + midname,grayscale = True)
+			label = load_img(self.label_path + "/" + midname, color_mode = "grayscale")
 			img = img_to_array(img)
 			label = img_to_array(label)
 			#img = cv2.imread(self.data_path + "/" + midname,cv2.IMREAD_GRAYSCALE)
