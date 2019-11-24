@@ -10,7 +10,7 @@ from data import *
 
 class myUnet(object):
 
-	def __init__(self, img_rows = 512, img_cols = 512):
+	def __init__(self, img_rows = 256, img_cols = 256):
 
 		self.img_rows = img_rows
 		self.img_cols = img_cols
@@ -24,7 +24,7 @@ class myUnet(object):
 
 	def get_unet(self):
 
-		inputs = Input((self.img_rows, self.img_cols,1))
+		inputs = Input((self.img_rows, self.img_cols,3))
 		
 		'''
 		unet with crop(because padding = valid) 
@@ -89,25 +89,25 @@ class myUnet(object):
 		'''
 
 		conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
-		print "conv1 shape:",conv1.shape
+		print ("conv1 shape:",conv1.shape)
 		conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv1)
-		print "conv1 shape:",conv1.shape
+		print ("conv1 shape:",conv1.shape)
 		pool1 = MaxPooling2D(pool_size=(2, 2))(conv1)
-		print "pool1 shape:",pool1.shape
+		print ("pool1 shape:",pool1.shape)
 
 		conv2 = Conv2D(128, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool1)
-		print "conv2 shape:",conv2.shape
+		print ("conv2 shape:",conv2.shape)
 		conv2 = Conv2D(128, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv2)
-		print "conv2 shape:",conv2.shape
+		print ("conv2 shape:",conv2.shape)
 		pool2 = MaxPooling2D(pool_size=(2, 2))(conv2)
-		print "pool2 shape:",pool2.shape
+		print ("pool2 shape:",pool2.shape)
 
 		conv3 = Conv2D(256, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool2)
-		print "conv3 shape:",conv3.shape
+		print ("conv3 shape:",conv3.shape)
 		conv3 = Conv2D(256, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv3)
-		print "conv3 shape:",conv3.shape
+		print ("conv3 shape:",conv3.shape)
 		pool3 = MaxPooling2D(pool_size=(2, 2))(conv3)
-		print "pool3 shape:",pool3.shape
+		print ("pool3 shape:",pool3.shape)
 
 		conv4 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(pool3)
 		conv4 = Conv2D(512, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(conv4)
