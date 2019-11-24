@@ -10,7 +10,7 @@ from data import *
 
 class myUnet(object):
 
-	def __init__(self, img_rows = 256, img_cols = 256):
+	def __init__(self, img_rows = 512, img_cols = 512):
 
 		self.img_rows = img_rows
 		self.img_cols = img_cols
