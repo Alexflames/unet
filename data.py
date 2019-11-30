@@ -227,8 +227,8 @@ class dataProcess(object):
 
 if __name__ == "__main__":
 
-	#aug = myAugmentation()
-	#aug.Augmentation()
+	aug = myAugmentation()
+	aug.Augmentation()
 	#aug.splitMerge()
 	#aug.splitTransform()
 	mydata = dataProcess(512,512)
